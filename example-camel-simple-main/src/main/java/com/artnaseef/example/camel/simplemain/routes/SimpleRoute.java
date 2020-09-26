@@ -2,10 +2,14 @@ package com.artnaseef.example.camel.simplemain.routes;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
-
-import java.util.Objects;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SimpleRoute extends RouteBuilder {
+    private static final Logger DEFAULT_LOGGER = LoggerFactory.getLogger(SimpleRoute.class);
+
+    private Logger log = DEFAULT_LOGGER;
+
     @Override
     public void configure() throws Exception {
         from("scheduler://test-data")
@@ -20,6 +24,6 @@ public class SimpleRoute extends RouteBuilder {
 
     private void showMessage(Exchange exchange) {
         Object body = exchange.getIn().getBody();
-        System.out.println("BODY = " + Objects.toString(body));
+        this.log.info("BODY = {}", body);
     }
 }
