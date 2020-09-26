@@ -169,5 +169,30 @@
                 </configuration>
             </plugin>
         </plugins>
+
+        <pluginManagement>
+            <plugins>
+                <!-- NOTE: only using spring-boot to produce a runnable jar; nothing more. -->
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>2.2.6.RELEASE</version>
+                    <configuration>
+                        <!-- Use the ZIP layout as that makes use of the PropertiesLauncher which enables simpler -->
+                        <!--  setup for externalized configuration (e.g. LOADER_PATH env var support).            -->
+                        <layout>ZIP</layout>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>build-runnable-jar</id>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+
+        </pluginManagement>
     </build>
 </project>
