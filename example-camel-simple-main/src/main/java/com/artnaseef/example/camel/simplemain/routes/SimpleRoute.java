@@ -9,6 +9,11 @@ public class SimpleRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         from("scheduler://test-data")
+                .setBody(constant("Scheduled Messsge"))
+                .process(this::showMessage)
+                ;
+
+        from("dataset://test-data")
                 .process(this::showMessage)
                 ;
     }
