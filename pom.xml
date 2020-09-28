@@ -17,6 +17,7 @@
 
     <modules>
       <module>example-camel-simple-main</module>
+      <module>example-camel-simple-control-bus</module>
       <module>example-camel-plain-spring</module>
     </modules>
 

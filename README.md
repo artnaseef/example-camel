@@ -18,3 +18,18 @@ which can be used as a starting point, or template, for more complex projects.
 
     $ java -jar "example-camel-simple-main/target/example-camel-simple-main-${PROJECT_VERSION}.jar"
     
+**Simple Control Bus**
+
+    $ java -jar "example-camel-simple-control-bus/target/example-camel-simple-control-bus-${PROJECT_VERSION}.jar"
+    
+    # Test
+    $ curl -H 'X-ROUTE-ID: hi-http-route' http://localhost:8080/route-status
+    $ curl http://localhost:8080/hi
+
+    $ curl -H 'X-ROUTE-ID: hi-http-route' http://localhost:8080/stop-route
+    $ curl -H 'X-ROUTE-ID: hi-http-route' http://localhost:8080/route-status
+    $ curl http://localhost:8080/hi
+
+    $ curl -H 'X-ROUTE-ID: hi-http-route' http://localhost:8080/start-route
+    $ curl -H 'X-ROUTE-ID: hi-http-route' http://localhost:8080/route-status
+    $ curl http://localhost:8080/hi
